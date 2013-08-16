@@ -2,6 +2,7 @@ How to Use
 =========
 
 Quick sample usage
+
     class { 'drupal':
       install_location => '/var/www/drupal',
       db_user          => 'drupal',
@@ -11,6 +12,7 @@ Quick sample usage
 
 Dependencies
 =========
+
 * [puppetlabs-vcsrepo](https://forge.puppetlabs.com/puppetlabs/vcsrepo)
 
 Requirements
