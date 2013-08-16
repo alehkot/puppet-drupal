@@ -6,8 +6,7 @@ Quick sample usage
     class { 'drupal':
       install_location => '/var/www/drupal',
       db_user          => 'drupal',
-      db_pass          => '123',
-      require => [Mysql::Db['drupal']]
+      db_pass          => '123'
     }
 
 Dependencies
