@@ -3,10 +3,10 @@
 # Installs Drupal
 class drupal (
   $install_location,
-  $tag          = '7.23',
+  $tag          = '7.27',
   $account_mail = 'admin@example.com',
   $account_name = 'admin',
-  $account_pass = 'test123',
+  $account_pass = 'admin',
   $clean_url    = 1,
   $db_type      = 'mysql',
   $db_su        = false,
@@ -31,33 +31,6 @@ class drupal (
     revision => $tag,
     user     => 'vagrant',
     require  => Package['git-core'],
-  }
-
-  # Clone Drush
-  vcsrepo { '/home/vagrant/drush':
-    ensure   => present,
-    provider => git,
-    source   => 'http://git.drupal.org/project/drush.git',
-    revision => '8.x-6.x',
-    user     => 'vagrant',
-    require  => [
-      Package['git-core'],
-      Vcsrepo[$install_location]
-    ]
-  }
-
-  # Make Drush executable
-  file { '/home/vagrant/drush/drush.php':
-    ensure  => 'present',
-    mode    => 'a+X,ug+w',
-    require => Vcsrepo['/home/vagrant/drush'],
-  }
-
-  # Make Drush system-wide
-  file { '/usr/local/bin/drush':
-    ensure  => 'link',
-    target  => '/home/vagrant/drush/drush.php',
-    require => File['/home/vagrant/drush/drush.php'],
   }
 
   # Construct Drush options
